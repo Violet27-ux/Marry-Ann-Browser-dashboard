@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Browser Environment Dashboard</title>
+  <style>
+    body {
+      font-family: Poppins, JetBrains Mono;
+      margin: 20px;
+      padding: 0;
+      color: black;
+    }
+    header {
+      background: #b5aaff;
+      color: black;
+      padding: 15px;
+      margin-bottom: 20px;
+    }
+    section {
+      margin-bottom: 30px;
+    }
+    h1 {
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
+    }
+    button {
+      padding: 10px 15px;
+      margin-right: 10px;
+      cursor: pointer;
+      background-color: #ffbfff;
+      color: #111;
+      border: none;
+      border-radius: 4px;
+    }
+    #profile p {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+
+<header id="profile">
+  <h1>Student Profile</h1>
+  <p><strong>Complete Name:</strong>  Marry Ann Atendido</p>
+  <p><strong>Sex:</strong> Female</p>
+  <p><strong>Address:</strong> Turague, Sagñay, Camarines Sur</p>
+  <p><strong>Course, Year, and Section:</strong> BSIT 2B</p>
+  <p><strong>Name of School:</strong> Partido State University</p>
+  <p><strong>Semester and Academic Year:</strong> 2nd Sem, AY 2024-2025</p>
+  <p><strong>Subject Code and Title:</strong> PF2 - Event-Driven Programming</p>
+  <p><strong>Name of Subject Instructor:</strong> Mr. Arjay Abio</p>
+</header>
+
+<section>
+  <h2>Browser Information</h2>
+  <p><strong>Browser Name:</strong> <span id="browserName"></span></p>
+  <p><strong>Platform:</strong> <span id="platform"></span></p>
+  <p><strong>Java Enabled:</strong> <span id="javaEnabled"></span></p>
+  <p><strong>Screen Resolution:</strong> <span id="screenResolution"></span></p>
+  <p><strong>Available Screen Size:</strong> <span id="availableScreen"></span></p>
+  <p><strong>Color Depth:</strong> <span id="colorDepth"></span></p>
+</section>
+
+<section>
+  <h2>Page Information and Controls</h2>
+  <p><strong>Current URL:</strong> <span id="url"></span></p>
+  <p><strong>Hostname:</strong> <span id="hostname"></span></p>
+  <p><strong>Page Title:</strong> <span id="pageTitle"></span></p>
+  <button onclick="changeTitle()">Change Page Title</button>
+</section>
+
+<section>
+  <h2>Navigation Controls</h2>
+  <button onclick="location.reload()">Reload Page</button>
+  <button onclick="location.href='https://www.google.com'">Google</button>
+  <button onclick="history.back()">Go Back</button>
+  <button onclick="history.forward()">Go Forward</button>
+</section>
+
+<script>
+// Part A: Browser Info
+document.getElementById("browserName").textContent = navigator.userAgent;
+document.getElementById("platform").textContent = navigator.platform;
+document.getElementById("javaEnabled").textContent = navigator.javaEnabled();
+document.getElementById("screenResolution").textContent = screen.width + " x " + screen.height;
+document.getElementById("availableScreen").textContent = screen.availWidth + " x " + screen.availHeight;
+document.getElementById("colorDepth").textContent = screen.colorDepth;
+
+// Part B: Page Info
+document.getElementById("url").textContent = location.href;
+document.getElementById("hostname").textContent = location.hostname;
+document.getElementById("pageTitle").textContent = document.title;
+
+function changeTitle() {
+  const newTitle = prompt("Enter a new page title:");
+  if (newTitle) {
+    document.title = newTitle;
+    document.getElementById("pageTitle").textContent = newTitle;
+  }
+}
+
+// Part D: Dynamic Background Color
+function updateBackground() {
+  const width = window.innerWidth;
+  if (width < 600) {
+    document.body.style.backgroundColor = "blue"; 
+  } else if (width < 992) {
+    document.body.style.backgroundColor = "green"; 
+  } else {
+    document.body.style.backgroundColor = "orange"; 
+  }
+}
+window.onload = updateBackground;
+window.onresize = updateBackground;
+</script>
+
+</body>
+</html>
